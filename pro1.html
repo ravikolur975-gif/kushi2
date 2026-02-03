@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>User Authentication</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.card{
+    background:#fff;
+    width:420px;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.2);
+}
+h2{text-align:center;margin-bottom:20px;}
+p{color:#555;}
+label{font-weight:bold;display:block;margin-top:12px;}
+input{
+    width:80%;
+    padding:12px;
+    margin-top:6px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+.gender{margin-top:8px;}
+.gender label{font-weight:normal;margin-right:15px;}
+button{
+    width:100%;
+    padding:12px;
+    margin-top:25px;
+    background:linear-gradient(to right,#0f9bcb,#0a6fa6);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{opacity:0.9;}
+.links{text-align:center;margin-top:15px;}
+.links a{color:#0a6fa6;cursor:pointer;display:block;margin-top:5px;}
+.form{display:none;}
+.form.active{display:block;}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<!-- LOGIN -->
+<div id="login" class="form active">
+    <h2>User Login</h2>
+
+    <label>Email</label>
+    <input type="email" placeholder="Enter your email">
+
+    <label>Password</label>
+    <input type="password" placeholder="Enter your password">
+
+    <button>Login</button>
+
+    <div class="links">
+        <a onclick="showForgot()">Forgot password?</a>
+        <a onclick="showRegister()">New User?</a>
+    </div>
+</div>
+
+<!-- REGISTER -->
+<div id="register" class="form">
+    <h2>User Registration</h2>
+
+    <label>First Name:</label>
+    <input type="text" placeholder="Enter first name">
+
+    <label>Last Name:</label><input type="text" placeholder="Enter last name">
+
+    <label>Email id:</label>
+    <input type="email" placeholder="Enter email">
+
+    <label>Gender:</label>
+    <div class="gender">
+        <label><input type="radio" name="gender"> Male</label>
+        <label><input type="radio" name="gender"> Female</label>
+        <label><input type="radio" name="gender"> Other</label>
+    </div>
+
+    <label>Phone Number:</label>
+    <input type="tel" placeholder="Enter phone number">
+
+    <label>Password:</label>
+    <input type="password" placeholder="Enter password">
+
+    <label>Confirm Password:</label>
+    <input type="password" placeholder="Confirm password">
+
+    <button onclick="goLogin()">Save</button>
+
+    <div class="links">
+        <a onclick="showLogin()">Back to Login</a>
+    </div>
+</div>
+
+<!-- FORGOT PASSWORD -->
+<div id="forgot" class="form">
+    <h2>Reset Password</h2>
+    <p>Enter your registered email</p>
+
+    <label>Email id</label>
+    <input type="email" placeholder="Enter your email">
+
+    <label>New Password</label>
+    <input type="password" placeholder="Enter new password">
+
+    <label>Confirm Password</label>
+    <input type="password" placeholder="Confirm password">
+
+    <button onclick="goLogin()">Submit</button>
+
+    <div class="links">
+        <a onclick="showLogin()">Back to Login</a>
+    </div>
+</div>
+
+</div>
+
+<script>
+function hideAll(){
+    document.querySelectorAll(".form").forEach(f=>{
+        f.classList.remove("active");
+    });
+}
+
+function showLogin(){
+    hideAll();
+    document.getElementById("login").classList.add("active");
+}
+
+function showRegister(){
+    hideAll();
+    document.getElementById("register").classList.add("active");
+}
+
+function showForgot(){
+    hideAll();
+    document.getElementById("forgot").classList.add("active");
+}
+
+// After submit/save → back to login
+function goLogin(){
+    showLogin();
+}
+</script>
+
+</body>
+</html>
